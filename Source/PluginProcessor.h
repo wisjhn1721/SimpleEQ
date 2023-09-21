@@ -9,7 +9,6 @@
 #pragma once
 
 #include <JuceHeader.h>
-
 //==============================================================================
 /**
 */
@@ -55,6 +54,11 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    
+    // Juce uses AudioProcessorValueTreeState to coordinate syncing the knobs on the GUI and the variables in the DSP.
+    static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+    juce::AudioProcessorValueTreeState apvts {*this, nullptr, "Parameters", createParameterLayout()};
 
 private:
     //==============================================================================
