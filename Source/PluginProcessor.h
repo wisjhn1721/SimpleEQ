@@ -234,6 +234,8 @@ inline auto makeHighCutFilter(const ChainSettings& chainSettings, double sampleR
                                                                                       2 * (chainSettings.highCutSlope + 1));
 }
 //==============================================================================
+/**
+*/
 class SimpleEQAudioProcessor  : public juce::AudioProcessor
 {
 public:
