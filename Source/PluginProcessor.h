@@ -158,6 +158,8 @@ struct ChainSettings
     float lowCutFreq { 0 }, highCutFreq { 0 };
     
     Slope lowCutSlope { Slope::Slope_12 }, highCutSlope { Slope::Slope_12 };
+    
+    bool lowCutBypassed { false }, peakBypassed { false }, highCutBypassed { false };
 };
 
 ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts);
@@ -232,8 +234,6 @@ inline auto makeHighCutFilter(const ChainSettings& chainSettings, double sampleR
                                                                                       2 * (chainSettings.highCutSlope + 1));
 }
 //==============================================================================
-/**
-*/
 class SimpleEQAudioProcessor  : public juce::AudioProcessor
 {
 public:
@@ -284,9 +284,6 @@ private:
     MonoChain leftChain, rightChain;
     
     void updatePeakFilter(const ChainSettings& chainSettings);
-
-    
-    
     
     void updateLowCutFilters(const ChainSettings& chainSettings);
     void updateHighCutFilters(const ChainSettings& chainSettings);
