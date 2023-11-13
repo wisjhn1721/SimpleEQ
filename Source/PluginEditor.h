@@ -277,6 +277,8 @@ struct AnalyzerButton : juce::ToggleButton
         
         juce::Random r;
         
+        
+        
         randomPath.startNewSubPath(insetRect.getX(),
                                    insetRect.getY() + insetRect.getHeight() * r.nextFloat());
         
